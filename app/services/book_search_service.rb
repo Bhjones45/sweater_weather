@@ -1,6 +1,6 @@
 class BookSearchService
   def self.search_books(location, quantity)
-    new.request_api("/search.json?q=#{location}&quantity=#{quantity}")
+    new.request_api("/search.json?q=#{location}&limit=#{quantity}")
   end
 
   def request_api(path)
