@@ -6,7 +6,7 @@ class BookSearchFacade
     forecast = ForecastDetails.new(data)
     temp = forecast.current_weather[:temperature]
     list_books = format_books(books)
-    details = format_details(location, forecast, temp, list_books)
+    details = format_details(location, forecast, temp, books, list_books)
     BookSearchDetails.new(details)
   end
 
@@ -20,14 +20,14 @@ class BookSearchFacade
     end
   end
 
-  def self.format_details(location, forecast, temp, list_books)
+  def self.format_details(location, forecast, temp, books, list_books)
     {
       destination: location,
       forecast: {
         summary: forecast.current_weather[:conditions],
         temperature: "#{temp} F"
       },
-      total_books_found: books.count,
+      total_books_found: books[:docs].count,
       books: list_books
     }
   end
