@@ -2,9 +2,9 @@ class BookSearchFacade
   def self.get_books(location, quantity)
     coordinates = MapQuestFacade.coordinates(location)
     books = BookSearchService.search_books(location, quantity)
-    forecast_data = OpenWeatherService.get_forecast_data(coordinates)
-    temp = forecast.current_weather[:temperature]
+    data = OpenWeatherService.get_forecast_data(coordinates)
     forecast = ForecastDetails.new(data)
+    temp = forecast.current_weather[:temperature]
     list_books = format_books(books)
     details = format_details(location, forecast, temp, list_books)
     BookSearchDetails.new(details)
