@@ -13,7 +13,7 @@ class BookSearchFacade
   def self.format_books(books)
     books.map do |book|
       {
-        isbn: book[:isbn],
+        isbn: book[:docs][:isbn],
         title: book[:title],
         publisher: book[:publisher]
       }
