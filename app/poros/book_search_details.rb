@@ -7,7 +7,7 @@ class BookSearchDetails
   def initialize(details)
     @destination = details[:destination]
     @forecast = details[:forecast]
-    @total_books_found = details[:books].count
+    @total_books_found = details[:total_books_found]
     @books = details[:books]
   end
 end

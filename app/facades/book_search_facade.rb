@@ -27,7 +27,7 @@ class BookSearchFacade
         summary: forecast.current_weather[:conditions],
         temperature: "#{temp} F"
       },
-      total_books_found: books[:docs].count,
+      total_books_found: books[:num_found],
       books: list_books
     }
   end
