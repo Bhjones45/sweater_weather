@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe 'library API' do
   describe "book index" do
     it 'can return book details and forcast', :vcr do
-      get '/api/v1/book-search?location=denver,co&quantity=5'
+      get '/api/v1/book-search?location=denver,co&limit=5'
 
       body = JSON.parse(response.body, symbolize_names: true)
 
