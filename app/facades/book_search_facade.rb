@@ -11,9 +11,9 @@ class BookSearchFacade
   end
 
   def self.format_books(books)
-    books.map do |book|
+    books[:docs].map do |book|
       {
-        isbn: book[:docs][:isbn],
+        isbn: book[:isbn],
         title: book[:title],
         publisher: book[:publisher]
       }
