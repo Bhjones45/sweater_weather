@@ -22,14 +22,14 @@ RSpec.describe 'library API' do
 
       expect(body[:data][:attributes][:forecast]).to have_key(:summary)
       expect(body[:data][:attributes][:forecast]).to have_key(:temperature)
-      expect(body[:data][:attributes][:forecast][:summary]).to eq('Cloudy with a chance of meatballs')
-      expect(body[:data][:attributes][:forecast][:temperature]).to eq('83 F')
+      expect(body[:data][:attributes][:forecast][:summary]).to eq('scattered clouds')
+      expect(body[:data][:attributes][:forecast][:temperature]).to eq('78.69 F')
 
-      expect(body[:data][:attributes][:total_books_found]).to eq('172')
+      expect(body[:data][:attributes][:total_books_found]).to eq(5)
 
       expect(body[:data][:attributes][:books].count).to eq(5)
       expect(body[:data][:attributes][:books][0][:title]).to eq('Denver, Co')
-      expect(body[:data][:attributes][:books][0][:publisher]).to eq('Universal Map Enterprises')
+      expect(body[:data][:attributes][:books][0][:publisher][0]).to eq('Universal Map Enterprises')
     end
   end
 end
