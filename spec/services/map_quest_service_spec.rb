@@ -18,7 +18,7 @@ RSpec.describe 'class methods' do
       expect(response).to be_a(Hash)
       expect(response[:route]).to have_key(:distance)
       expect(response[:route][:distance]).to eq(71.433)
-      expect(response[:route][:realTime]).to eq(5510)
+      expect(response[:route][:realTime]).to eq(5519)
     end
   end
 end
