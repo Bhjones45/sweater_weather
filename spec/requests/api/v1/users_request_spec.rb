@@ -12,7 +12,7 @@ RSpec.describe 'user requests' do
         "password_confirmation": "1234"
       }, as: :json
 
-      body = JSON.parse(resonse.body, symbolize_names: true)
+      body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(201)
       expect(body[:data]).to be_a(Hash)
@@ -29,7 +29,7 @@ RSpec.describe 'user requests' do
         "email": 'who@test.com'
       }, as: :json
 
-      body = JSON.parse(resonse.body, symbolize_names: true)
+      body = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(422)
       expect(body[:error]).to eq("Invaild email or password.")
