@@ -20,8 +20,8 @@ RSpec.describe RoadTripDetails do
         expect(roadtrip_info.start_city).to eq("denver,co")
         expect(roadtrip_info.end_city).to eq("estes park,co")
         expect(roadtrip_info.travel_time).to eq('01 hours, 22 minutes')
-        expect(roadtrip_info.weather_at_eta[:temperature]).to eq('68.3')
-        expect(roadtrip_info.weather_at_eta[:conditions]).to eq('moderate rain')
+        expect(roadtrip_info.weather_at_eta[:temperature]).to eq('66.8')
+        expect(roadtrip_info.weather_at_eta[:conditions]).to eq('overcast clouds')
       end
     end
   end
