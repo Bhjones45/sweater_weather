@@ -17,7 +17,7 @@ class RoadTripDetails
     if details[:time].nil?
       "unvailable route"
     elsif details[:time] < (Time.now + 300000)
-      "#{details[:travel_time][0]} hours, #{details[:travel_time][1] minutes}"
+      "#{details[:travel_time][0]} hours, #{details[:travel_time][1]} minutes"
     end
   end
 end
