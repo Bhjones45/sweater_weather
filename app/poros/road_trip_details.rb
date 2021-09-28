@@ -20,4 +20,21 @@ class RoadTripDetails
       "#{details[:travel_time][0]} hours, #{details[:travel_time][1]} minutes"
     end
   end
+
+  def format_weather(details)
+    if details[:time].nil?
+      {
+        temperature: nil,
+        conditions: nil
+      }
+    elsif details[:time] < (Time.now + 300000)
+      future_forecast = details[:weather].hourly_weather.find do |hour|
+        hour[:time].to_i == details[:time].hour
+      end
+      {
+        temperature: "#{future_forecast[:temperature].round(1)}",
+        conditions: future_forecast[:conditions]
+      }
+    end
+  end
 end
