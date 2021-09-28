@@ -11,5 +11,14 @@ RSpec.describe "Background api" do
       expect(body[:data]).to have_key(:attributes)
       expect(body[:data][:attributes]).to have_key(:info)
     end
+
+    it 'cannot return background', :vcr do
+      get '/api/v1/backgrounds?location='
+
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(400)
+      expect(body[:error]).to eq("Unable to find background")
+    end
   end
 end
