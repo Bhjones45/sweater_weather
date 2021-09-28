@@ -15,7 +15,7 @@ RSpec.describe "road trip api" do
       post '/api/v1/road_trip', params: {
         "origin": "Boise,ID",
         "destination": "Seattle,WA",
-        "api_key": @user_info
+        "api_key": @user_info[:data][:attributes][:api_key]
       }, as: :json
 
       body = JSON.parse(response.body, symbolize_names: true)
@@ -31,6 +31,19 @@ RSpec.describe "road trip api" do
 
       expect(body[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
       expect(body[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
+    end
+
+    it 'can return error for incorrect API key' do
+      post '/api/v1/road_trip', params: {
+        "origin": "Boise,ID",
+        "destination": "Seattle,WA",
+        "api_key": @user_info
+      }, as: :json
+
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(body[:error]).to eq("Unable to validate")
     end
   end
 end
