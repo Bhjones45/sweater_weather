@@ -31,7 +31,7 @@ RSpec.describe 'user requests' do
 
       body = JSON.parse(resonse.body, symbolize_names: true)
 
-      expect(response.status).to eq(400)
+      expect(response.status).to eq(422)
       expect(body[:error]).to eq("Invaild email or password.")
     end
   end
