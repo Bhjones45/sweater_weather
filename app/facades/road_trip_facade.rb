@@ -13,7 +13,7 @@ class RoadTripFacade
       time: time
     }
 
-    RoadTripDetails.new(details)
+    RoadTripDetails.new(info)
   end
 
   def self.view_travel_time(route)
