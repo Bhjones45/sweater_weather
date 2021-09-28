@@ -23,6 +23,28 @@ RSpec.describe RoadTripDetails do
         expect(roadtrip_info.weather_at_eta[:temperature]).to eq(66.8)
         expect(roadtrip_info.weather_at_eta[:conditions]).to eq('overcast clouds')
       end
+
+      it 'can return impossible message when cities are too far away', :vcr do
+        forecast = WeatherFacade.forecast("london,uk")
+        time = Time.now + 5605
+
+        info = {
+          :start_city=>"denver,co",
+          :end_city=>"london,uk",
+          :travel_time=>nil,
+          :weather=>forecast,
+          :time=>nil
+        }
+
+        roadtrip_info = RoadTripDetails.new(info)
+
+        expect(roadtrip_info.id).to eq ("null")
+        expect(roadtrip_info.start_city).to eq("denver,co")
+        expect(roadtrip_info.end_city).to eq("london,uk")
+        expect(roadtrip_info.travel_time).to eq('impossible route')
+        expect(roadtrip_info.weather_at_eta[:temperature]).to eq(nil)
+        expect(roadtrip_info.weather_at_eta[:conditions]).to eq(nil)
+      end
     end
   end
 end
