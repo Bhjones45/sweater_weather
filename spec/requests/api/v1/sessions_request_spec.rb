@@ -25,5 +25,15 @@ RSpec.describe "sessions api" do
       expect(body[:data][:attributes][:email]).to eq("test@pleasework.com")
       expect(body[:data][:attributes][:api_key]).to eq(@user.api_key)
     end
+
+    it 'cannot log in with incorrect params' do
+      post '/api/v1/sessions', params: {
+        "email": "test@pleasework.com",
+        "password": "incorrectpassword",
+      }, as: :json
+      body = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(401)
+    end
   end
 end
