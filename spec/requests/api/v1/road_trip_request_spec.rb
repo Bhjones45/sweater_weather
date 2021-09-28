@@ -13,8 +13,8 @@ RSpec.describe "road trip api" do
 
     it 'can return info about the road trip' do
       post '/api/v1/road_trip', params: {
-        "origin": "Boise,ID",
-        "destination": "Seattle,WA",
+        "origin": "boise,id",
+        "destination": "seattle,wa",
         "api_key": @user_info[:data][:attributes][:api_key]
       }, as: :json
 
