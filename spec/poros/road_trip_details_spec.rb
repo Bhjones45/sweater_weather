@@ -14,7 +14,7 @@ RSpec.describe RoadTripDetails do
           :time=>time
         }
 
-        roadtrip_info = RoadTripDetails.new(details)
+        roadtrip_info = RoadTripDetails.new(info)
 
         expect(roadtrip_info.id).to eq ("null")
         expect(roadtrip_info.start_city).to eq("denver,co")
