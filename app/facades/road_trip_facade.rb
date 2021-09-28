@@ -17,6 +17,18 @@ class RoadTripFacade
   end
 
   def self.view_travel_time(route)
-    binding.pry
+    if route[:route][:routeError][:errorCode] == (-400)
+      route[:route][:formattedTime].split(':')
+    else
+      nil
+    end
+  end
+
+  def self.view_time(route)
+    if route[:route][:routeError][:errorCode] == (-400)
+      Time.now + route[:route][:realTime]
+    else
+      nil
+    end
   end
 end
