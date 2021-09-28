@@ -5,7 +5,7 @@ class Api::V1::RoadTripController < ApplicationController
       trip = RoadTripFacade.road_trip(road_trip_params[:origin], road_trip_params[:destination])
       render json: RoadTripSerializer.new(trip), status: 200
     else
-      x
+      render json: { error: 'Unable to validate' }, status: 404
     end
   end
 
