@@ -7,11 +7,11 @@ RSpec.describe RoadTripDetails do
         time = Time.now + 5605
 
         info = {
-          :start_city: "denver,co",
-          :end_city: "estes park,co",
-          :travel_time: ["01", "22", "49"],
-          :weather: forecast,
-          :time: time
+          :start_city=>"denver,co",
+          :end_city=>"estes park,co",
+          :travel_time=>["01", "22", "49"],
+          :weather=>forecast,
+          :time=>time
         }
 
         roadtrip_info = RoadTripDetails.new(details)
