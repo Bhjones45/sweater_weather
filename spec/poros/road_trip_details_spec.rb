@@ -4,7 +4,7 @@ RSpec.describe RoadTripDetails do
     describe '::initialize' do
       it 'create road trip object', :vcr do
         forecast = WeatherFacade.forecast("estes park,co")
-        time = Time.now + 5605
+        time = Time.now
 
         info = {
           :start_city=>"denver,co",
@@ -20,13 +20,12 @@ RSpec.describe RoadTripDetails do
         expect(roadtrip_info.start_city).to eq("denver,co")
         expect(roadtrip_info.end_city).to eq("estes park,co")
         expect(roadtrip_info.travel_time).to eq('01 hours, 22 minutes')
-        expect(roadtrip_info.weather_at_eta[:temperature]).to eq(64.1)
+        expect(roadtrip_info.weather_at_eta[:temperature]).to eq(66.8)
         expect(roadtrip_info.weather_at_eta[:conditions]).to eq('overcast clouds')
       end
 
       it 'can return impossible message when cities are too far away', :vcr do
         forecast = WeatherFacade.forecast("london,uk")
-        time = Time.now + 5605
 
         info = {
           :start_city=>"denver,co",
