@@ -13,12 +13,12 @@ RSpec.describe 'class methods' do
 
   describe '::find_route' do
     it 'can return route between two cities', :vcr do
-      response = MapQuestService.find_route('denver,co', 'Estes park,co')
+      response = MapQuestService.find_route('denver,co', 'Estes Park,co')
 
       expect(response).to be_a(Hash)
       expect(response[:route]).to have_key(:distance)
-      expect(response[:route][:distance]).to have_key(71.433)
-      expect(response[:route][:realTime]).to have_key(5510)
+      expect(response[:route][:distance]).to eq(71.433)
+      expect(response[:route][:realTime]).to eq(5510)
     end
   end
 end
